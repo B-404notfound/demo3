@@ -1,19 +1,19 @@
-class Producto{
-    static contadorProductos = 0;
+class Feria{
+    static contadorFrutas = 0;
 
-    constructor(nombre, precio){
-        this._idProducto = ++Producto.contadorProductos;
-        this._nombre = nombre;
+    constructor(tipo,precio){
+        this._idFruta = ++Feria.contadorFrutas;
+        this._tipo = tipo;
         this._precio = precio;
     }
-    get idProducto(){
-        return this._idProducto;
+    get idFruta(){
+        return this._idFruta;
     }
-    get nombre(){
-        return this._nombre;
+    get tipo(){
+        return this._tipo;
     }
-    set nombre(nombre){
-        this._nombre = nombre;
+    set tipo(tipo){
+        this._tipo = tipo;
     }
     get precio(){
         return this._precio;
@@ -22,27 +22,23 @@ class Producto{
         return this._precio = precio;
     }
     toString(){
-        return `idProducto: ${this._idProducto}, nombre: ${this._nombre}, precio: $ ${this._precio}`;
+        return `idFruta: ${this._idFruta},tipo: ${this._tipo},precio: ${this._precio}`;
     }
 }
 
 class Orden{
-    static contadorOrdenes =0;
+    static contadorOrdenes = 0;
 
     static get MAX_PRODUCTOS(){
         return 5;
     }
-
     constructor(){
         this._idOrden = ++Orden.contadorOrdenes;
         this._productos = [];
-        //this._contadorProductosAgregados = 0;
     }
-
     get idOrden(){
         return this._idOrden;
     }
-
     agregarProducto(producto){
         if(this._productos.length < Orden.MAX_PRODUCTOS){
             this._productos.push(producto);
@@ -65,20 +61,13 @@ class Orden{
 
         console.log(`Orden: ${this._idOrden} Total:$ ${this.calcularTotal()},Productos: ${productosOrden}`);
     }
+
 }
 
-let producto1 = new Producto("Camisa",200);
-let producto2 = new Producto("Pantalon", 4000);
-
+let fruta1 = new Feria("papas",400);
 let orden1 = new Orden();
-orden1.agregarProducto(producto1);
-orden1.agregarProducto(producto2);
+orden1.agregarProducto(fruta1);
 orden1.mostrarOrden();
-
-let orden2 = new Orden();
-
-let producto3 = new Producto('Corbata',500);
-orden2.agregarProducto(producto3);
-orden2.agregarProducto(producto2);
-orden2.agregarProducto(producto1);
-orden2.mostrarOrden();
+let fruta2 = new Feria("Lechuga",450);
+orden1.agregarProducto(fruta2);
+orden1.mostrarOrden();
