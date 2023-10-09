@@ -75,7 +75,7 @@ class Clase{
         for(let curso of this._estudiantes){
             listaCurso += `\n`+ curso.toString()+' ';
         }
-        console.log(`Curso: ${this._idCantidad},Total Estudiantes:${this._idCantidad}`);
+        console.log(`Curso: ${this._idCantidad},Total Estudiantes:${this.totalAlumnos()}, Lista: ${listaCurso}`);
     }
 
 }
@@ -87,5 +87,12 @@ let alumno3 = new Curso('Lenguaje',"Ricardo","Tomas");
 let curso1 = new Clase();
 let curso2 = new Clase();
 curso2.agregarEstudiantes(alumno1);
+curso2.agregarEstudiantes(alumno3);
+curso2.agregarEstudiantes(alumno1);
+curso2.agregarEstudiantes(alumno3);
+curso1.agregarEstudiantes(alumno1);
+curso1.agregarEstudiantes(alumno3);
+
 
 curso2.mostrarLista();
+curso1.mostrarLista();
