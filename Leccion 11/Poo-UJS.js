@@ -20,7 +20,26 @@ class Gerente extends Empleado{
         return `Gerente: ${super.obtenerDetalles()} depto: ${this.departamento}`;
     }
 }
+
+
+function imprimir(tipo){
+    console.log(tipo.obtenerDetalles());
+    if(tipo instanceof Gerente){
+        console.log('Es un objeto de tipo Gerente');
+    }
+    if(tipo instanceof Empleado){
+        console.log('Es un objeto de tipo Empleado');
+    }
+}
+
+
+
+
+
+
 let empleado1 = new Empleado('Juan',2500);
 let gerente1 = new Gerente('Luis',45000,'Sistemas');
-console.log(gerente1.obtenerDetalles());
-console.log(empleado1.obtenerDetalles());
+
+
+imprimir (empleado1);
+imprimir(gerente1);
