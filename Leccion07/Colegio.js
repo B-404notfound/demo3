@@ -61,12 +61,8 @@ class Clase{
     }
 
     totalAlumnos(){
-        let totalCurso = 0;
-
-        for(let curso of this._estudiantes){
-            totalCurso += curso._idAlumno;
-        }
-        return totalCurso;
+        
+        return this._estudiantes.length;
     }
 
     mostrarLista(){

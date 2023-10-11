@@ -69,15 +69,70 @@ class Monitor{
      }
 }
 
+class Computadora{
+
+    static contadorComputadoras = 0;
+
+    constructor(nombre,monitor,raton,teclado) {
+        this._idComputadora = ++Computadora.contadorComputadoras;
+        this._nombre = nombre;
+        this._monitor = monitor;
+        this._raton = raton;
+        this._teclado = teclado;
+    }
+
+    toString(){
+        return `Computadora: ${this._idComputadora}: ${this._nombre} \n ${this._monitor} \n ${this._raton} \n ${this._teclado}`;
+    }
+
+}
+
+class Orden{
+    static contadorOrdenes = 0;
+
+    constructor() {
+        this._idOrden =++Orden.contadorOrdenes;
+        this._computadoras = [];
+    }
+    get idOrden(){
+        return this._idOrden;
+    }
+
+    agregarComputadora(computadora){
+        this._computadoras.push(computadora);
+    }
+
+    mostrarOrden(){
+        let computadorasOrden = '';
+
+        for(let computadora of this._computadoras){
+            computadorasOrden += ` \n ${computadora}`;
+        }
+        console.log(`Orden: ${this._idOrden}, Computadoras: ${computadorasOrden}`);
+    }
+}
+
+
+
 let monitor1= new Monitor("ViewSonic","80");
 let monitor2 = new Monitor("Samsung","23");
 let teclado1=new Teclado("Bluetooh","HP");
 let teclado2 = new Teclado("USB","Linux");
 let raton1 = new Raton("USB","HP");
-let raton2 = new Raton("USB","EPSON")
-console.log(raton2.toString());
-console.log(raton1.toString());
-console.log(teclado1.toString());
-console.log(teclado2.toString());
-console.log(monitor1.toString());
-console.log(monitor2.toString());
+let raton2 = new Raton("USB","EPSON");
+
+let computadora1 = new Computadora('HP',monitor1,raton1,teclado1);
+let computadora2 = new Computadora('Armada',monitor2,raton1,teclado2);
+console.log(`${computadora2}`);
+console.log(`${computadora1}`);
+
+let orden1 = new Orden();
+let orden2 = new Orden();
+
+orden1.agregarComputadora(computadora1);
+orden1.agregarComputadora(computadora2);
+orden1.agregarComputadora(computadora2);
+orden1.mostrarOrden();
+orden2.agregarComputadora(computadora1);
+orden2.agregarComputadora(computadora2);
+orden2.mostrarOrden();
